@@ -56,9 +56,7 @@ module Airtable
         :body => { "fields" => fields  }.to_json,
         :headers => { "Content-type" => "application/json" }).parsed_response
 
-      binding.pry
-
-      if result.present? && result["ID"].present?
+      if result.present? && result["id"].present?
         record
       else # failed
         false
