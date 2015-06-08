@@ -7,8 +7,8 @@ module Airtable
       @attrs.map { |k, v| define_accessor(k) }
     end
 
-    def id; @attrs["id"]; end
-    def id=(val); @attrs["id"] = val; end
+    def id; @attrs["ID"]; end
+    def id=(val); @attrs["ID"] = val; end
 
     # Return given attribute based on name or blank otherwise
     def [](name)

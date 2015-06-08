@@ -48,10 +48,16 @@ module Airtable
 
     # Replaces record in airtable based on id
     def update(record)
-      result = self.class.put(worksheet_url + "/" + id,
-        :body => { "fields" => record.fields }.to_json,
+      fields = record.fields
+      fields.delete(:id)
+
+      binding.pry
+
+      result = self.class.put(worksheet_url + "/" + record.id,
+        :body => { "fields" => fields  }.to_json,
         :headers => { "Content-type" => "application/json" }).parsed_response
-      if result.present? && result["id"].present?
+
+      if result.present? && result["ID"].present?
         record
       else # failed
         false
